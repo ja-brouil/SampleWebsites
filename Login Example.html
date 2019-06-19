@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login Example</title>
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto);
+        body {
+        background-color: #333;
+        font-family: 'Roboto', Arial;
+        color: #fff;
+        padding: 4em; }
+    </style>
+</head>
+<body>
+    <div>
+        <h2>Example Login</h2>
+    </div>
+    <div>
+       <form id="Login">
+           Login: <input type="text" id="loginAccount">
+           Password: <input type="password" id="loginPassword">
+           <input type="button" value="Login" id="submitToServer">
+       </form>
+    </div>
+    <div>
+        <p id="console">This text will change here.</p>
+    </div>
+</body>
+<script>
+    // Notice: this should not be used in real practice and it's just for demo purposes.
+    const correctPassword = "someStrongPassword";
+    const correctLogin = "Marisa Hammond";
+
+    // Retrieve HTML Elements helper
+    const getElement = (element) => {
+        return document.getElementById(element);
+    }
+
+    // Add Event listener to the login button
+    getElement("submitToServer").addEventListener("click", (event) => {
+        // Prevent page from reloading
+        event.preventDefault();
+
+        // Check if password combo is good
+        // Get values from the input
+        let typedPassword = getElement("loginPassword").value;
+        let typedAccount = getElement("loginAccount").value;
+
+        // Check if they are good, you would normally send this to a server
+        if (typedAccount === correctLogin && typedPassword === correctPassword){
+            getElement("console").textContent = "Login succesful.";
+        } else {
+            getElement("console").textContent = "Incorrect login or password.";
+        }
+    });
+
+</script>
+</html>
